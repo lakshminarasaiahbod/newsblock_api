@@ -158,4 +158,12 @@ public class ArticleServiceImpl implements ArticleService {
 		}
 
 	}
+
+	@Override
+	public List<Categories> getCategories() {
+
+		List<Categories> listCategories = categoryRepository.findActive();
+
+		return listCategories;
+	}
 }

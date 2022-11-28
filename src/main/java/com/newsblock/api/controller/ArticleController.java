@@ -1,6 +1,7 @@
 package com.newsblock.api.controller;
 
 import java.util.LinkedHashMap;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -9,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.newsblock.api.model.Categories;
 import com.newsblock.api.model.dto.Article;
 import com.newsblock.api.services.ArticleService;
 import com.newsblock.api.util.CommonResponse;
@@ -39,6 +41,15 @@ public class ArticleController {
 		CommonResponse commonResponse = new CommonResponse();
 		Article article = articleService.getArticleData(id, token);
 		commonResponse.setSuccessResponse(article);
+		return commonResponse;
+	}
+
+	@RequestMapping(method = RequestMethod.GET, value = "/categories")
+	public CommonResponse categories() {
+
+		CommonResponse commonResponse = new CommonResponse();
+		List<Categories> categories = articleService.getCategories();
+		commonResponse.setSuccessResponse(categories);
 		return commonResponse;
 	}
 
