@@ -122,9 +122,59 @@ public class ArticleServiceImpl implements ArticleService {
 
 		} else {
 
-		}
+			if (category_id != 0) {
 
-		return null;
+				List<ArticletoCategory> listArticle = articletoCategoryRepository.findByCategory(category_id);
+				List<Integer> articleIdSorted = new ArrayList<>();
+				for (ArticletoCategory articletoCategory : listArticle) {
+					articleIdSorted.add(articletoCategory.getArticleid());
+				}
+
+				List<Articles> Total_articles = articlesRepository.getByList(articleIdSorted);
+				System.out.println(Total_articles);
+				List<Object> sorted = new ArrayList<>();
+				for (Articles article : Total_articles) {
+					LinkedHashMap<String, Object> local_map = new LinkedHashMap<>();
+					local_map.put("title", article.getTitle());
+					local_map.put("ref_img", article.getImage());
+					sorted.add(local_map);
+					if (sorted.size() == limit) {
+						break;
+					}
+				}
+				result_map.put(category_name, sorted);
+				return result_map;
+
+			} else {
+				List<Categories> allCategories = categoryRepository.findActive();
+
+				for (Categories categoryObj : allCategories) {
+
+					List<ArticletoCategory> listArticle = articletoCategoryRepository
+							.findByCategory(categoryObj.getId());
+					List<Integer> articleIdSorted = new ArrayList<>();
+					for (ArticletoCategory articletoCategory : listArticle) {
+						articleIdSorted.add(articletoCategory.getArticleid());
+					}
+
+					List<Articles> Total_articles = articlesRepository.getByList(articleIdSorted);
+					List<Object> sorted = new ArrayList<>();
+					for (Articles article : Total_articles) {
+						LinkedHashMap<String, Object> local_map = new LinkedHashMap<>();
+						local_map.put("title", article.getTitle());
+						local_map.put("ref_img", article.getImage());
+						sorted.add(local_map);
+						if (sorted.size() == limit) {
+							break;
+						}
+					}
+					result_map.put(categoryObj.getCategoryname(), sorted);
+
+				}
+				return result_map;
+			}
+
+		}
 	}
 
 	@Override
