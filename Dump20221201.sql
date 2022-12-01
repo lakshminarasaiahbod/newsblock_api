@@ -1,4 +1,4 @@
-CREATE DATABASE  IF NOT EXISTS `newsblock` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
+CREATE DATABASE  IF NOT EXISTS `newsblock` /*!40100 DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
 USE `newsblock`;
 -- MySQL dump 10.13  Distrib 8.0.30, for macos12 (x86_64)
 --
@@ -23,7 +23,7 @@ USE `newsblock`;
 
 DROP TABLE IF EXISTS `articles`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
+/*!50503 SET character_set_client = utf8 */;
 CREATE TABLE `articles` (
   `id` int NOT NULL AUTO_INCREMENT,
   `title` varchar(450) DEFAULT NULL,
@@ -38,7 +38,7 @@ CREATE TABLE `articles` (
   `createdon` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updatedon` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=501 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=501 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -57,7 +57,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `articletocategory`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
+/*!50503 SET character_set_client = utf8 */;
 CREATE TABLE `articletocategory` (
   `id` int NOT NULL AUTO_INCREMENT,
   `articleid` int NOT NULL,
@@ -70,7 +70,7 @@ CREATE TABLE `articletocategory` (
   KEY `fk_categoryid` (`categoryid`),
   CONSTRAINT `fk_articleid` FOREIGN KEY (`articleid`) REFERENCES `articles` (`id`),
   CONSTRAINT `fk_categoryid` FOREIGN KEY (`categoryid`) REFERENCES `categories` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=501 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=501 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -89,7 +89,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `articleviewership`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
+/*!50503 SET character_set_client = utf8 */;
 CREATE TABLE `articleviewership` (
   `id` int NOT NULL AUTO_INCREMENT,
   `articleid` int NOT NULL,
@@ -101,7 +101,7 @@ CREATE TABLE `articleviewership` (
   KEY `fk_av_useid` (`userid`),
   CONSTRAINT `fk_av_articleid` FOREIGN KEY (`articleid`) REFERENCES `articles` (`id`),
   CONSTRAINT `fk_av_useid` FOREIGN KEY (`userid`) REFERENCES `users_login` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -120,7 +120,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `categories`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
+/*!50503 SET character_set_client = utf8 */;
 CREATE TABLE `categories` (
   `id` int NOT NULL AUTO_INCREMENT,
   `categoryname` varchar(45) NOT NULL,
@@ -128,7 +128,7 @@ CREATE TABLE `categories` (
   `createdon` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updatedon` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -147,7 +147,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `config_properties`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
+/*!50503 SET character_set_client = utf8 */;
 CREATE TABLE `config_properties` (
   `id` int NOT NULL AUTO_INCREMENT,
   `propertyname` varchar(450) NOT NULL,
@@ -156,7 +156,7 @@ CREATE TABLE `config_properties` (
   `createdon` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updatedon` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -175,7 +175,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `users_login`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
+/*!50503 SET character_set_client = utf8 */;
 CREATE TABLE `users_login` (
   `id` int NOT NULL AUTO_INCREMENT,
   `userid` varchar(45) NOT NULL,
@@ -195,7 +195,7 @@ CREATE TABLE `users_login` (
   `access_token` varchar(450) DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `user_name_UNIQUE` (`userid`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
