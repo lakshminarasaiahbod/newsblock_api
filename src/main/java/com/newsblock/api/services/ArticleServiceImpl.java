@@ -66,6 +66,8 @@ public class ArticleServiceImpl implements ArticleService {
 			user_id = userLogins.get(0).getId();
 		}
 
+
+		
 		if (user_id == 0) {
 
 			if (category_id != 0) {
@@ -83,6 +85,8 @@ public class ArticleServiceImpl implements ArticleService {
 					LinkedHashMap<String, Object> local_map = new LinkedHashMap<>();
 					local_map.put("title", article.getTitle());
 					local_map.put("ref_img", article.getImage());
+					local_map.put("id", article.getId());
+
 					sorted.add(local_map);
 					if (sorted.size() == limit) {
 						break;
@@ -109,6 +113,8 @@ public class ArticleServiceImpl implements ArticleService {
 						LinkedHashMap<String, Object> local_map = new LinkedHashMap<>();
 						local_map.put("title", article.getTitle());
 						local_map.put("ref_img", article.getImage());
+						local_map.put("id", article.getId());
+
 						sorted.add(local_map);
 						if (sorted.size() == limit) {
 							break;
@@ -137,6 +143,8 @@ public class ArticleServiceImpl implements ArticleService {
 					LinkedHashMap<String, Object> local_map = new LinkedHashMap<>();
 					local_map.put("title", article.getTitle());
 					local_map.put("ref_img", article.getImage());
+					local_map.put("id", article.getId());
+
 					sorted.add(local_map);
 					if (sorted.size() == limit) {
 						break;
@@ -163,6 +171,8 @@ public class ArticleServiceImpl implements ArticleService {
 						LinkedHashMap<String, Object> local_map = new LinkedHashMap<>();
 						local_map.put("title", article.getTitle());
 						local_map.put("ref_img", article.getImage());
+						local_map.put("id", article.getId());
+
 						sorted.add(local_map);
 						if (sorted.size() == limit) {
 							break;
